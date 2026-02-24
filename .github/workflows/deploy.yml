@@ -1,0 +1,11 @@
+name: Deploy Streamlit
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: shivammathur/setup-python@v2
+      with: { python-version: '3.9' }
+    - run: pip install -r requirements.txt
+    - run: streamlit run app.py --server.headless true --server.port 8501
